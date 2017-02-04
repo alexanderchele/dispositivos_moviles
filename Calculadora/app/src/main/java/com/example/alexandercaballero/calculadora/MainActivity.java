@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     Boolean r=false;
     Boolean d=false;
     Boolean m=false;
+    Boolean limpiar=false;
     Double n1,n2,result;
 
     @Override
@@ -63,11 +64,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
 
     }
-
+    public void clear(){
+        TextView screen = (TextView)findViewById(R.id.texto);
+        if (limpiar==true){
+            screen.setText("");
+            limpiar=false;
+        }
+    }
     @Override
     public void onClick(View v) {
         TextView screen = (TextView)findViewById(R.id.texto);
         int opcion=v.getId();
+        clear();
         String cadena=screen.getText().toString();
         try {
         switch (opcion){
@@ -75,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                 case R.id.boton0:
                     screen.setText(cadena+"0");
                     break;
-                case R.id.boton1:
+            case R.id.boton1:
                     screen.setText(cadena+"1");
                     break;
                 case R.id.boton2:
@@ -100,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                     screen.setText(cadena+"8");
                     break;
                 case R.id.boton9:
+
                     screen.setText(cadena+"9");
                     break;
                 case R.id.botonP:
@@ -111,25 +120,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             case R.id.botonSuma:
                 s=true;
                 n1=Double.parseDouble(cadena);
-                screen.setText("");
+                limpiar=true;
+
                 punto=false;
                 break;
             case R.id.botonResta:
                 r=true;
                 n1=Double.parseDouble(cadena);
-                screen.setText("");
+                limpiar=true;
                 punto=false;
                 break;
             case R.id.botonDivision:
                 d=true;
                 n1=Double.parseDouble(cadena);
-                screen.setText("");
+                limpiar=true;
                 punto=false;
                 break;
             case R.id.botonProducto:
                 m=true;
                 n1=Double.parseDouble(cadena);
-                screen.setText("");
+                limpiar=true;
+
                 punto=false;
                 break;
             case R.id.botonDel:
